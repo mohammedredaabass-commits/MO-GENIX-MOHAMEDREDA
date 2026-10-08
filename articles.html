@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>المقالات | أكتوبر 73</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="home.css">
+
+    <style>
+        /* =========================================
+           NAVBAR
+        ========================================= */
+
+        .navbar {
+            width: 100%;
+            min-height: 72px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 25px;
+            padding: 12px 35px;
+
+            background: #0f172a !important;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            box-shadow: 0 5px 20px rgba(15,23,42,0.20);
+
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+
+            direction: rtl;
+        }
+
+        .nav-logo {
+            font-family: Arial, sans-serif;
+            font-size: 25px;
+            font-weight: 900;
+            color: #ffffff !important;
+            white-space: nowrap;
+            letter-spacing: 1px;
+        }
+
+        .nav-logo span {
+            color: #60a5fa !important;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            position: relative;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            padding: 10px 13px;
+
+            color: #cbd5e1 !important;
+            background: transparent !important;
+
+            text-decoration: none;
+
+            font-family: "Cairo", sans-serif;
+            font-size: 14px;
+            font-weight: 700;
+
+            border-radius: 10px;
+
+            transition:
+                color 0.25s ease,
+                background 0.25s ease,
+                transform 0.25s ease;
+        }
+
+        .nav-links a:hover {
+            color: #ffffff !important;
+            background: rgba(59,130,246,0.15) !important;
+            transform: translateY(-2px);
+        }
+
+        .nav-links a.active {
+            color: #ffffff !important;
+            background: #2563eb !important;
+
+            box-shadow:
+                0 5px 15px rgba(37,99,235,0.25);
+        }
+
+        .theme-button {
+            width: 42px;
+            height: 42px;
+
+            flex-shrink: 0;
+
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 12px;
+
+            background: rgba(255,255,255,0.08) !important;
+            color: #ffffff !important;
+
+            font-size: 18px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            transition: 0.25s ease;
+        }
+
+        .theme-button:hover {
+            background: rgba(59,130,246,0.25) !important;
+            transform: rotate(8deg) scale(1.05);
+        }
+
+
+        /* =========================================
+           ARTICLE PAGE
+        ========================================= */
+
+        .articles-page {
+            min-height: 100vh;
+            padding-bottom: 60px;
+            background: #f8fafc;
+        }
+
+        .articles-header {
+            text-align: center;
+            padding: 70px 20px 45px;
+            background:
+                linear-gradient(
+                    135deg,
+                    #0f172a 0%,
+                    #172554 55%,
+                    #1d4ed8 100%
+                );
+            color: #ffffff;
+        }
+
+        .articles-header h1 {
+            margin-bottom: 15px;
+
+            font-size: clamp(34px, 6vw, 58px);
+            font-weight: 900;
+            line-height: 1.3;
+        }
+
+        .articles-header p {
+            max-width: 850px;
+            margin: auto;
+
+            color: #dbeafe;
+
+            font-size: clamp(16px, 2vw, 20px);
+            line-height: 2;
+        }
+
+
+        /* =========================================
+           ARTICLE CONTAINER
+        ========================================= */
+
+        .article-container {
+            width: min(1100px, calc(100% - 30px));
+            margin: 45px auto;
+        }
+
+        .article-card {
+            background: #ffffff;
+
+            border: 1px solid #e2e8f0;
+            border-radius: 24px;
+
+            padding: clamp(25px, 5vw, 55px);
+
+            box-shadow:
+                0 15px 45px rgba(15,23,42,0.08);
+        }
+
+
+        /* =========================================
+           ARTICLE INTRO
+        ========================================= */
+
+        .article-intro {
+            margin-bottom: 45px;
+            padding: 30px;
+
+            background: #eff6ff;
+
+            border-right: 5px solid #2563eb;
+            border-radius: 15px;
+        }
+
+        .article-intro h2 {
+            margin-bottom: 15px;
+
+            color: #1d4ed8;
+
+            font-size: 30px;
+            font-weight: 800;
+        }
+
+        .article-intro p {
+            color: #334155;
+            font-size: 17px;
+            line-height: 2.1;
+        }
+
+
+        /* =========================================
+           ARTICLE SECTIONS
+        ========================================= */
+
+        .article-section {
+            margin-bottom: 45px;
+            padding-bottom: 35px;
+
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .article-section:last-of-type {
+            border-bottom: none;
+        }
+
+        .article-section h2 {
+            position: relative;
+
+            margin-bottom: 20px;
+            padding-right: 18px;
+
+            color: #0f172a;
+
+            font-size: clamp(24px, 4vw, 32px);
+            font-weight: 800;
+            line-height: 1.5;
+        }
+
+        .article-section h2::before {
+            content: "";
+
+            position: absolute;
+            right: 0;
+            top: 8px;
+
+            width: 6px;
+            height: 38px;
+
+            background: #2563eb;
+            border-radius: 10px;
+        }
+
+        .article-section p {
+            margin-bottom: 16px;
+
+            color: #334155;
+
+            font-size: 17px;
+            line-height: 2.15;
+        }
+
+        .article-section p:last-child {
+            margin-bottom: 0;
+        }
+
+
+        /* =========================================
+           SCIENCE BOX
+        ========================================= */
+
+        .science-box {
+            margin-top: 25px;
+            padding: 25px;
+
+            background: #f8fafc;
+
+            border: 1px solid #dbeafe;
+            border-right: 5px solid #3b82f6;
+
+            border-radius: 15px;
+        }
+
+        .science-box h3 {
+            margin-bottom: 12px;
+
+            color: #1d4ed8;
+
+            font-size: 21px;
+            font-weight: 800;
+        }
+
+        .science-box p {
+            margin-bottom: 0;
+        }
+
+
+        /* =========================================
+           ARTICLE END
+        ========================================= */
+
+        .article-ending {
+            margin-top: 25px;
+            padding: 35px;
+
+            text-align: center;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #eff6ff,
+                    #dbeafe
+                );
+
+            border-radius: 20px;
+
+            border: 1px solid #bfdbfe;
+        }
+
+        .article-ending h2 {
+            margin-bottom: 15px;
+
+            color: #1e3a8a;
+
+            font-size: clamp(26px, 4vw, 38px);
+            font-weight: 900;
+        }
+
+        .article-ending p {
+            margin-bottom: 12px;
+
+            color: #334155;
+
+            font-size: 17px;
+            line-height: 2;
+        }
+
+
+        /* =========================================
+           BACK BUTTON
+        ========================================= */
+
+        .back-button-container {
+            text-align: center;
+            margin-top: 35px;
+        }
+
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+
+            padding: 13px 25px;
+
+            background: #2563eb;
+            color: #ffffff;
+
+            text-decoration: none;
+
+            border-radius: 12px;
+
+            font-family: "Cairo", sans-serif;
+            font-weight: 700;
+
+            box-shadow:
+                0 8px 20px rgba(37,99,235,0.20);
+
+            transition: 0.25s ease;
+        }
+
+        .back-button:hover {
+            background: #1d4ed8;
+            transform: translateY(-3px);
+        }
+
+
+        /* =========================================
+           DARK MODE
+        ========================================= */
+
+        body.dark-mode .articles-page {
+            background: #020617;
+        }
+
+        body.dark-mode .article-card {
+            background: #0f172a;
+            border-color: #1e293b;
+
+            box-shadow:
+                0 15px 45px rgba(0,0,0,0.25);
+        }
+
+        body.dark-mode .article-intro {
+            background: #172554;
+            border-color: #3b82f6;
+        }
+
+        body.dark-mode .article-intro h2 {
+            color: #93c5fd;
+        }
+
+        body.dark-mode .article-intro p {
+            color: #cbd5e1;
+        }
+
+        body.dark-mode .article-section {
+            border-color: #1e293b;
+        }
+
+        body.dark-mode .article-section h2 {
+            color: #f8fafc;
+        }
+
+        body.dark-mode .article-section p {
+            color: #cbd5e1;
+        }
+
+        body.dark-mode .science-box {
+            background: #111827;
+            border-color: #1e40af;
+        }
+
+        body.dark-mode .science-box h3 {
+            color: #93c5fd;
+        }
+
+        body.dark-mode .science-box p {
+            color: #cbd5e1;
+        }
+
+        body.dark-mode .article-ending {
+            background: #172554;
+            border-color: #1e40af;
+        }
+
+        body.dark-mode .article-ending h2 {
+            color: #bfdbfe;
+        }
+
+        body.dark-mode .article-ending p {
+            color: #cbd5e1;
+        }
+
+
+        /* =========================================
+           RESPONSIVE
+        ========================================= */
+
+        @media (max-width: 900px) {
+
+            .navbar {
+                padding: 12px 18px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .nav-logo {
+                width: 100%;
+                text-align: center;
+                margin-bottom: 4px;
+            }
+
+            .nav-links {
+                width: 100%;
+                gap: 4px;
+            }
+
+            .nav-links a {
+                font-size: 13px;
+                padding: 8px 10px;
+            }
+
+            .theme-button {
+                position: absolute;
+                left: 15px;
+                top: 14px;
+            }
+
+            .articles-header {
+                padding: 55px 18px 35px;
+            }
+
+            .article-container {
+                width: min(100% - 20px, 1100px);
+                margin: 25px auto;
+            }
+
+            .article-card {
+                padding: 25px 20px;
+            }
+        }
+
+
+        @media (max-width: 550px) {
+
+            .nav-links {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                width: 100%;
+                gap: 5px;
+            }
+
+            .nav-links a {
+                font-size: 12px;
+                padding: 8px 4px;
+                white-space: nowrap;
+            }
+
+            .articles-header h1 {
+                font-size: 32px;
+            }
+
+            .articles-header p {
+                font-size: 15px;
+            }
+
+            .article-intro {
+                padding: 22px 18px;
+            }
+
+            .article-section p {
+                font-size: 15px;
+                line-height: 2;
+            }
+
+            .article-section h2 {
+                font-size: 23px;
+            }
+
+            .article-ending {
+                padding: 25px 18px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- =========================================
+         NAVBAR
+    ========================================= -->
+
+    <nav class="navbar">
+
+        <div class="nav-logo">
+            <span>OCTOBER</span>73
+        </div>
+
+        <div class="nav-links">
+
+            <a href="home.html">
+                الرئيسية
+            </a>
+
+            <a href="story.html">
+                القصة
+            </a>
+
+            <a href="timeline.html">
+                الخط الزمني
+            </a>
+
+            <a href="images.html">
+                الصور
+            </a>
+
+            <a href="videos.html">
+                الفيديوهات
+            </a>
+
+            <a href="articles.html" class="active">
+                المقالات
+            </a>
+
+            <a href="about.html">
+                عن المشروع
+            </a>
+
+        </div>
+
+        <button
+            id="themeButton"
+            class="theme-button"
+            type="button"
+            aria-label="تغيير الوضع"
+        >
+            🌙
+        </button>
+
+    </nav>
+
+
+    <!-- =========================================
+         PAGE
+    ========================================= -->
+
+    <main class="articles-page">
+
+
+        <!-- HEADER -->
+
+        <header class="articles-header">
+
+            <h1>
+                حرب أكتوبر 1973
+            </h1>
+
+            <p>
+                ملحمة العبور واسترداد الكرامة
+            </p>
+
+        </header>
+
+
+        <!-- ARTICLE -->
+
+        <div class="article-container">
+
+            <article class="article-card">
+
+
+                <!-- INTRO -->
+
+                <section class="article-intro">
+
+                    <h2>
+                        مقدمة
+                    </h2>
+
+                    <p>
+                        تُعد حرب أكتوبر 1973 واحدة من أبرز المحطات في التاريخ المصري والعربي الحديث،
+                        حيث شهدت مواجهة عسكرية استطاعت فيها القوات المسلحة المصرية عبور قناة السويس
+                        وتحطيم التحصينات الإسرائيلية على الضفة الشرقية، في السادس من أكتوبر عام 1973.
+                        وقد مثّلت الحرب نقطة تحول مهمة في تاريخ المنطقة، وأظهرت قدرة الإنسان على التخطيط
+                        والصبر والعمل الجماعي لتحقيق الأهداف.
+                    </p>
+
+                </section>
+
+
+                <!-- SECTION 1 -->
+
+                <section class="article-section">
+
+                    <h2>
+                        1. الوضع قبل الحرب
+                    </h2>
+
+                    <p>
+                        بعد حرب يونيو 1967، أصبحت شبه جزيرة سيناء تحت الاحتلال الإسرائيلي،
+                        وبدأت مصر مرحلة جديدة من الاستعداد لاستعادة الأرض.
+                    </p>
+
+                    <p>
+                        خلال هذه الفترة خاضت القوات المسلحة المصرية حرب الاستنزاف،
+                        التي ساهمت في إعادة بناء القوات المسلحة ورفع مستوى التدريب والكفاءة.
+                    </p>
+
+                </section>
+
+
+                <!-- SECTION 2 -->
+
+                <section class="article-section">
+
+                    <h2>
+                        2. التخطيط والاستعداد
+                    </h2>
+
+                    <p>
+                        لم تكن حرب أكتوبر مجرد مواجهة عسكرية مفاجئة، بل سبقتها فترة طويلة
+                        من التخطيط والتدريب والاستعداد.
+                    </p>
+
+                    <p>
+                        عملت القوات المسلحة المصرية على إعداد خطة العبور، وتدريب الجنود
+                        على التعامل مع قناة السويس والتحصينات الموجودة على الضفة الشرقية.
+                    </p>
+
+                    <div class="science-box">
+
+                        <h3>
+                            💡 الجانب العلمي والهندسي
+                        </h3>
+
+                        <p>
+                            لعب التفكير الهندسي دورًا مهمًا في التغلب على بعض العقبات،
+                            ومن أبرزها استخدام وسائل هندسية لفتح ممرات في الساتر الترابي
+                            وإنشاء المعابر اللازمة لعبور القوات والمعدات.
+                        </p>
+
+                    </div>
+
+                </section>
+
+
+                <!-- SECTION 3 -->
+
+                <section class="article-section">
+
+                    <h2>
+                        3. بداية حرب أكتوبر
+                    </h2>
+
+                    <p>
+                        في يوم السادس من أكتوبر عام 1973، الموافق العاشر من رمضان،
+                        بدأت القوات المصرية تنفيذ خطة العبور في توقيت واحد مع الضربة الجوية.
+                    </p>
+
+                    <p>
+                        عبرت القوات المصرية قناة السويس، وبدأت في إنشاء رؤوس جسور على الضفة الشرقية،
+                        في عملية عسكرية منظمة اعتمدت على التدريب والتنسيق بين مختلف وحدات القوات المسلحة.
+                    </p>
+
+                </section>
+
+
+                <!-- SECTION 4 -->
+
+                <section class="article-section">
+
+                    <h2>
+                        4. عبور قناة السويس
+                    </h2>
+
+                    <p>
+                        كان عبور قناة السويس من أهم مراحل الحرب، حيث تمكنت القوات المصرية
+                        من عبور القناة باستخدام وسائل ومعدات هندسية مختلفة.
+                    </p>
+
+                    <p>
+                        ساعد التنظيم والتخطيط المسبق والتدريب المستمر على تنفيذ عملية العبور
+                        وتحقيق تقدم مهم في بداية الحرب.
+                    </p>
+
+                </section>
+
+
+                <!-- SECTION 5 -->
+
+                <section class="article-section">
+
+                    <h2>
+                        5. خط بارليف
+                    </h2>
+
+                    <p>
+                        كان خط بارليف عبارة عن مجموعة من التحصينات الدفاعية التي أقامتها إسرائيل
+                        على طول الضفة الشرقية لقناة السويس.
+                    </p>
+
+                    <p>
+                        اعتمدت القوات المصرية على أساليب هندسية وعسكرية للتعامل مع هذه التحصينات
+                        وفتح ممرات تسمح بمرور القوات والمعدات.
+                    </p>
+
+                </section>
+
+
+                <!-- SECTION 6 -->
+
+                <section class="article-section">
+
+                    <h2>
+                        6. دور القوات الجوية
+                    </h2>
+
+                    <p>
+                        شاركت القوات الجوية المصرية في بداية الحرب بتنفيذ ضربات جوية استهدفت
+                        مواقع عسكرية مهمة، ضمن خطة متزامنة مع عبور القوات البرية للقناة.
+                    </p>
+
+                    <p>
+                        ساهم التنسيق بين القوات الجوية والقوات البرية في دعم عملية العبور
+                        وتحقيق أهداف المرحلة الأولى من الخطة.
+                    </p>
+
+                </section>
+
+
+                <!-- SECTION 7 -->
+
+                <section class="article-section">
+
+                    <h2>
+                        7. دور القوات البحرية
+                    </h2>
+
+                    <p>
+                        كان للقوات البحرية المصرية دور في تأمين الجبهة البحرية والمساهمة
+                        في تنفيذ المهام المرتبطة بخطة الحرب.
+                    </p>
+
+                    <p>
+                        عملت مختلف أفرع القوات المسلحة معًا ضمن خطة متكاملة لتحقيق الأهداف العسكرية.
+                    </p>
+
+                </section>
+
+
+                <!-- SECTION 8 -->
+
+                <section class="article-section">
+
+                    <h2>
+                        8. الصمود والاستمرار
+                    </h2>
+
+                    <p>
+                        تميزت الحرب بالصمود والاستمرار في تنفيذ الخطط الموضوعة،
+                        مع التعامل مع المتغيرات التي ظهرت أثناء العمليات.
+                    </p>
+
+                    <p>
+                        وأثبتت التجربة أن النجاح في المواقف الصعبة يحتاج إلى الانضباط،
+                        وحسن التخطيط، والعمل الجماعي.
+                    </p>
+
+                </section>
+
+
+                <!-- SECTION 9 -->
+
+                <section class="article-section">
+
+                    <h2>
+                        9. أهمية حرب أكتوبر
+                    </h2>
+
+                    <p>
+                        لم تكن أهمية حرب أكتوبر مرتبطة بالجانب العسكري فقط،
+                        بل كان لها تأثير كبير على المجتمع المصري وعلى المنطقة بأكملها.
+                    </p>
+
+                    <p>
+                        أعادت الحرب الثقة والروح المعنوية إلى المصريين،
+                        وأصبحت رمزًا لقدرة الإنسان على تجاوز الصعوبات عندما يمتلك
+                        الإرادة والعلم والتخطيط.
+                    </p>
+
+                </section>
+
+
+                <!-- SECTION 10 -->
+
+                <section class="article-section">
+
+                    <h2>
+                        10. العلم والتكنولوجيا في الحرب
+                    </h2>
+
+                    <p>
+                        أظهرت حرب أكتوبر أهمية العلم والتكنولوجيا في التخطيط والتنفيذ العسكري.
+                        فقد احتاجت العمليات إلى معرفة دقيقة بالجغرافيا والهندسة والاتصالات
+                        وحسابات الحركة والتوقيت.
+                    </p>
+
+                    <p>
+                        ويؤكد ذلك أن العلم لا يقتصر على الدراسة النظرية،
+                        بل يمكن أن يتحول إلى أدوات وحلول تساعد الإنسان على مواجهة التحديات.
+                    </p>
+
+                </section>
+
+
+                <!-- SECTION 11 -->
+
+                <section class="article-section">
+
+                    <h2>
+                        11. الدروس المستفادة
+                    </h2>
+
+                    <p>
+                        من أهم الدروس التي يمكن استخلاصها من حرب أكتوبر أهمية التخطيط الجيد،
+                        والتدريب المستمر، والعمل الجماعي، والاستفادة من العلم والخبرة.
+                    </p>
+
+                    <p>
+                        كما توضح التجربة أن تحقيق الأهداف الكبيرة يحتاج إلى الصبر
+                        والإصرار وعدم الاستسلام أمام الصعوبات.
+                    </p>
+
+                </section>
+
+
+                <!-- SECTION 12 -->
+
+                <section class="article-section">
+
+                    <h2>
+                        12. ذكرى أكتوبر
+                    </h2>
+
+                    <p>
+                        ما زالت ذكرى حرب أكتوبر حاضرة في الذاكرة المصرية،
+                        باعتبارها واحدة من أهم الأحداث التي أثرت في التاريخ الحديث لمصر.
+                    </p>
+
+                    <p>
+                        وتبقى هذه الذكرى فرصة للتعرف على التاريخ، وفهم أهمية العلم والتخطيط،
+                        وتقدير الجهود التي بذلت من أجل استعادة الأرض والكرامة.
+                    </p>
+
+                </section>
+
+
+                <!-- END -->
+
+                <section class="article-ending">
+
+                    <h2>
+                        الخاتمة
+                    </h2>
+
+                    <p>
+                        تظل حرب أكتوبر 1973 صفحة مهمة في تاريخ مصر،
+                        تحمل الكثير من الدروس في الشجاعة والتخطيط والعمل الجماعي.
+                    </p>
+
+                    <p>
+                        ومن خلال دراسة هذه التجربة التاريخية يمكننا أن ندرك أن العلم،
+                        والمعرفة، والتخطيط، والإرادة عناصر أساسية في تحقيق الأهداف الكبيرة.
+                    </p>
+
+                    <p>
+                        فالتاريخ ليس مجرد أحداث نقرأها، بل هو مصدر للتعلم والإلهام
+                        وبناء المستقبل.
+                    </p>
+
+                </section>
+
+
+                <!-- BACK BUTTON -->
+
+                <div class="back-button-container">
+
+                    <a href="home.html" class="back-button">
+                        ← العودة إلى الرئيسية
+                    </a>
+
+                </div>
+
+
+            </article>
+
+        </div>
+
+    </main>
+
+
+    <!-- THEME -->
+
+    <script src="theme.js"></script>
+
+</body>
+</html>

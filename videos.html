@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+```
+<title>أكتوبر 73 | الفيديوهات</title>
+
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="home.css">
+
+<style>
+    .videos-page {
+        max-width: 1150px;
+        margin: auto;
+    }
+
+    .video-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+        margin-top: 45px;
+    }
+
+    .video-card {
+        overflow: hidden;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        transition: 0.3s ease;
+    }
+
+    .video-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 18px 35px rgba(15, 23, 42, 0.12);
+    }
+
+    .video-player {
+        width: 100%;
+        display: block;
+        aspect-ratio: 16 / 9;
+        background: #000;
+    }
+
+    .video-content {
+        padding: 24px;
+    }
+
+    .video-number {
+        color: var(--primary);
+        font-size: 12px;
+        font-weight: 800;
+    }
+
+    .video-content h2 {
+        margin: 8px 0 10px;
+        font-size: 21px;
+    }
+
+    .video-content p {
+        color: var(--muted);
+        line-height: 1.9;
+        font-size: 14px;
+    }
+
+    .video-note {
+        margin-top: 40px;
+        padding: 20px;
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        background: var(--surface);
+        color: var(--muted);
+        line-height: 2;
+        font-size: 14px;
+    }
+
+    @media (max-width: 750px) {
+        .video-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+```
+
+</head>
+
+<body>
+
+<header class="navbar">
+
+```
+<div class="nav-logo">
+    OCTOBER<span>73</span>
+</div>
+
+<nav>
+    <a href="home.html">الرئيسية</a>
+    <a href="story.html">الحكاية</a>
+    <a href="timeline.html">الخط الزمني</a>
+    <a href="images.html">الصور</a>
+    <a href="articles.html">المقالات</a>
+    <a href="videos.html">الفيديوهات</a>
+</nav>
+
+<button id="themeButton" class="theme-button">🌙</button>
+```
+
+</header>
+
+<main>
+
+<section class="content-section videos-page">
+
+```
+<div class="section-title">
+
+    <span>01</span>
+
+    <h1>فيديوهات أكتوبر 73</h1>
+
+    <p>
+        مجموعة من الفيديوهات التي توثق أحداث وذكريات حرب أكتوبر 1973.
+    </p>
+
+</div>
+
+
+<div class="video-grid">
+
+
+    <!-- الفيديو الأول -->
+
+    <article class="video-card">
+
+        <video class="video-player" controls preload="metadata">
+
+            <source src="v1.mp4" type="video/mp4">
+
+            متصفحك لا يدعم تشغيل الفيديو.
+
+        </video>
+
+        <div class="video-content">
+
+            <span class="video-number">فيديو 01</span>
+
+            <h2>ذاكرة أكتوبر</h2>
+
+            <p>
+                مادة مرئية من أرشيف المشروع عن أحداث أكتوبر 1973.
+            </p>
+
+        </div>
+
+    </article>
+
+
+    <!-- الفيديو الثاني -->
+
+    <article class="video-card">
+
+        <video class="video-player" controls preload="metadata">
+
+            <source src="v2.mp4" type="video/mp4">
+
+            متصفحك لا يدعم تشغيل الفيديو.
+
+        </video>
+
+        <div class="video-content">
+
+            <span class="video-number">فيديو 02</span>
+
+            <h2>حكاية العبور</h2>
+
+            <p>
+                فيديو يعرض جانبًا من أحداث عبور قناة السويس.
+            </p>
+
+        </div>
+
+    </article>
+
+
+    <!-- الفيديو الثالث -->
+
+    <article class="video-card">
+
+        <video class="video-player" controls preload="metadata">
+
+            <source src="v3.mp4" type="video/mp4">
+
+            متصفحك لا يدعم تشغيل الفيديو.
+
+        </video>
+
+        <div class="video-content">
+
+            <span class="video-number">فيديو 03</span>
+
+            <h2>أكتوبر في الذاكرة</h2>
+
+            <p>
+                لقطات أرشيفية توثق جانبًا من أحداث الحرب.
+            </p>
+
+        </div>
+
+    </article>
+
+
+    <!-- الفيديو الرابع -->
+
+    <article class="video-card">
+
+        <video class="video-player" controls preload="metadata">
+
+            <source src="v4.mp4" type="video/mp4">
+
+            متصفحك لا يدعم تشغيل الفيديو.
+
+        </video>
+
+        <div class="video-content">
+
+            <span class="video-number">فيديو 04</span>
+
+            <h2>شهادات وذكريات</h2>
+
+            <p>
+                مادة مرئية مرتبطة بذاكرة حرب أكتوبر 1973.
+            </p>
+
+        </div>
+
+    </article>
+
+
+</div>
+
+
+<div class="video-note">
+
+    <strong>ملاحظة:</strong>
+
+    الفيديوهات يتم تشغيلها مباشرة من ملفات المشروع الموجودة
+    على جهازك، ولا تحتاج الصفحة إلى اتصال بالإنترنت لتشغيلها.
+
+</div>
+```
+
+</section>
+
+</main>
+
+<footer>
+
+```
+<p>أكتوبر 73 © 2026</p>
+```
+
+</footer>
+
+<script src="theme.js"></script>
+
+</body>
+
+</html>
